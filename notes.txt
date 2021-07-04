@@ -1,0 +1,51 @@
+##Instalacion de raspiraw
+
+```bash
+git clone https://github.com/raspberrypi/raspiraw
+cd raspiraw
+make
+````
+add the following line to ~/.bashrc
+```bash
+PATH=~/raspiraw:~/raspiraw/tools:$PATH
+```
+execute camera_i2c
+```bash
+camera_i2x
+```
+Append the following inside the file '/boot/config.txt':
+```
+dtparam=i2c_vc=on
+```
+Append the following inside the file '/etc/modules-load.d/modules.conf':
+```
+i2c-dev
+```
+
+##Instalacion dcraw
+```bash
+sudo apt-get install libjasper-dev libjpeg8-dev gettext liblcms2-dev
+git clone https://github.com/6by9/dcraw
+cd dcraw
+./buildme
+```
+To convert from *.raw* to *.ppm*
+```bash
+dcraw file.name.raw
+```
+To convert from *.ppm* to *.png*
+```bash
+sudo apt-get install netpbm
+pnmtopng out.0123.ppm > result.png
+
+
+
+
+## Resources
+https://stamm-wilbrandt.de/en/Raspberry_camera.html
+https://blog.robertelder.org/recording-660-fps-on-raspberry-pi-camera/
+https://www.raspberrypi.org/documentation/raspbian/applications/camera.md
+
+
+
+```
